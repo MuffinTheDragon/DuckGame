@@ -5,16 +5,19 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
+import java.io.FileInputStream;
 
 
 /*
@@ -31,13 +34,18 @@ public class Main extends Application { //get functionality for a JavaFX program
     Stage window;
     Button buttonStart;
     Button buttonHelp;
+    ImageView imgView1;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
 
         final Group rootGroup = new Group();
+        final Group rootGroup2 = new Group();
         StackPane layout = new StackPane();
-        Scene scene1 = new Scene(rootGroup, 300, 275); //replace layout with rootGroup to use
+        Scene scene1 = new Scene(rootGroup, 1300, 650); //replace layout with rootGroup to use
+
+        primaryStage.setResizable(false);
+
         // rootGroup.getChildren()
 //        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
 
@@ -45,13 +53,16 @@ public class Main extends Application { //get functionality for a JavaFX program
 
         final Text text1 = new Text("Duck Game");
         text1.setFill(Color.CHOCOLATE);
-        text1.setFont(Font.font(java.awt.Font.SERIF, 25));
+        text1.setFont(Font.font(java.awt.Font.MONOSPACED, 125));
 
-        Tools.setCoordinates(text1, 95, 50);
+
+        Tools.setCoordinates(text1, 600, 100);
         rootGroup.getChildren().add(text1);
 
-
-
+        //Add Game logo
+        Image img1 = new Image("/Images/Logo.png");
+        imgView1.setImage(img1);
+        rootGroup.getChildren().add(imgView1);
 
         primaryStage.setTitle("Duck Game");
 
@@ -60,11 +71,14 @@ public class Main extends Application { //get functionality for a JavaFX program
         buttonStart = new Button();
         buttonStart.setText("Start");
         buttonStart.setOnAction(e -> System.out.println("lamb")); //Using Lambada expressions for less code
-        Tools.setCoordinates(buttonStart, 130, 135);
-
+        Tools.setCoordinates(buttonStart, 650, 155);
+        Scene scene2 = new Scene(rootGroup2, 300, 275);
         buttonHelp = new Button();
         buttonHelp.setText("Help");
-        buttonHelp.setOnAction(e -> System.out.println("Help"));
+        buttonHelp.setOnAction(e -> {
+            System.out.println("Help");
+            primaryStage.setScene(scene2);
+        });
         Tools.setCoordinates(buttonHelp, 130, 175);
 
         //button.setOnAction(this) //whenever user clicks the button, look in this class for the handle method
