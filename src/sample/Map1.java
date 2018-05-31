@@ -17,7 +17,8 @@ public class Map1 {
 
 
         ImageView background = new ImageView();
-        background.setImage(new Image("file:" + "C:\\Users\\dhava\\Stuff\\Duck Game\\Icons\\SkyMap.png"));
+        background.setImage(new Image("/Images/SkyMap.png"));
+//        background.setImage(new Image("file:" + "C:\\Users\\dhava\\Stuff\\Duck Game\\Icons\\SkyMap.png"));
 
 
         Button buttonStart = new Button("Start");
