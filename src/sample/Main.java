@@ -48,6 +48,7 @@ public class Main extends Application { //get functionality for a JavaFX program
         BorderPane bp2 = new BorderPane();
         final Pane p = new Pane();
 
+
         final Group rootGroup = new Group();
         final Group rootGroup2 = new Group();
 
@@ -56,6 +57,13 @@ public class Main extends Application { //get functionality for a JavaFX program
 //        Scene scene2 = new Scene(rootGroup2, 1300, 650); //replace layout with rootGroup to use
 
         primaryStage.setResizable(false);
+
+
+       File css = new File("C:\\Users\\dhava\\Stuff\\Duck Game\\StyleSheets\\Button.css");
+       scene1.getStylesheets().clear();
+       scene1.getStylesheets().add(String.valueOf(css));
+
+
 
         // rootGroup.getChildren()
 //        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
