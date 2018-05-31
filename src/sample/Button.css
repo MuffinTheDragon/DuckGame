@@ -17,7 +17,7 @@
     transition: 0.5s;
 }
 
-.buttonStart span:after {
+.buttonStart span {
     content: '\00bb';
     position: absolute;
     opacity: 0;
@@ -28,9 +28,11 @@
 
 .buttonStart:hover span {
     padding-right: 25px;
+    -fx-background-insets: 0;
 }
 
-.buttonStart:hover span:after {
-    opacity: 1;
+.buttonStart:hover span {
+    opacity: 1px;
     right: 0;
+    -fx-background-insets: 0;
 }

@@ -105,7 +105,7 @@ public class Main extends Application { //get functionality for a JavaFX program
         button = new Button("Start");
 
 
-        button.getStyleClass().clear();
+//        button.getStyleClass().clear();
         button.getStyleClass().add("buttonStart");
 
 
