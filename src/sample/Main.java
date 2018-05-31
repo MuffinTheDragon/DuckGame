@@ -12,11 +12,16 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
+import javax.print.attribute.standard.MediaPrintableArea;
+import java.io.File;
 import java.io.FileInputStream;
 
 
@@ -41,19 +46,19 @@ public class Main extends Application { //get functionality for a JavaFX program
 
         BorderPane bp = new BorderPane();
         BorderPane bp2 = new BorderPane();
+        final Pane p = new Pane();
 
         final Group rootGroup = new Group();
         final Group rootGroup2 = new Group();
 
         StackPane layout = new StackPane();
-        Scene scene1 = new Scene(rootGroup, 1300, 650); //replace layout with rootGroup to use
-        Scene scene2 = new Scene(rootGroup2, 1300, 650); //replace layout with rootGroup to use
+        Scene scene1 = new Scene(p, 1300, 650); //replace layout with rootGroup to use
+//        Scene scene2 = new Scene(rootGroup2, 1300, 650); //replace layout with rootGroup to use
 
         primaryStage.setResizable(false);
 
         // rootGroup.getChildren()
 //        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-
 
 
 //        final Text text1 = new Text("Duck Game");
@@ -66,15 +71,7 @@ public class Main extends Application { //get functionality for a JavaFX program
 
 
         //Add Game logo
-        try {
-            Image img1 = new Image("file:" + "C:\\Users\\dhava\\Stuff\\Duck Game\\Icons\\Logo.png");
-            ImageView imgView1 = new ImageView(img1);
-//            Tools.setCoordinates(img1, 650, 150);
-            Tools.setCoordinates(imgView1, 330, 150);
-            rootGroup.getChildren().add(imgView1);
-        }catch (NullPointerException e) {
-            System.out.println("Error");
-        }
+
 
         //Add Start Screen Background Image
 //        try {
@@ -95,8 +92,20 @@ public class Main extends Application { //get functionality for a JavaFX program
 
         primaryStage.setScene(scene1);
 
+
+        String uriString = new File("C:\\Users\\dhava\\Stuff\\Duck Game\\Music\\Title.mp3").toURI().toString();
+        MediaPlayer player = new MediaPlayer(new Media(uriString));
+        player.setCycleCount(MediaPlayer.INDEFINITE);
+        player.play();
+
+
+
         buttonStart = new Button("Start");
-        buttonStart.setOnAction(e -> primaryStage.setScene(scene2));
+        buttonStart.setOnAction(e -> {
+            primaryStage.setScene(Map1.loadMap1());
+            Tools.stopMusic(player);
+        });
+
         //Using Lambada expressions for less code
         Tools.setCoordinates(buttonStart, 620, 510);
 //        buttonHelp = new Button();
@@ -112,13 +121,32 @@ public class Main extends Application { //get functionality for a JavaFX program
 
 
 //        bp.getChildren().add(buttonStart);
-        rootGroup.getChildren().add(buttonStart);
 
 //        bp.getChildren().addAll(buttonHelp);
 
         primaryStage.getIcons().add(new Image(Main.class.getResourceAsStream("/Images/Duck.png")));
         primaryStage.setFullScreen(false);
         primaryStage.show();
+
+
+        ImageView background = new ImageView();
+        background.setImage(new Image("file:" + "C:\\Users\\dhava\\Stuff\\Duck Game\\Icons\\StartScreen.jpg"));
+        background.setFitWidth(1310);
+        background.setFitHeight(670);
+
+
+        p.getChildren().add(background);
+        p.getChildren().add(buttonStart);
+
+        try {
+            Image img1 = new Image("file:" + "C:\\Users\\dhava\\Stuff\\Duck Game\\Icons\\Logo.png");
+            ImageView imgView1 = new ImageView(img1);
+//            Tools.setCoordinates(img1, 650, 150);
+            Tools.setCoordinates(imgView1, 350, 150);
+            p.getChildren().add(imgView1);
+        } catch (NullPointerException e) {
+            System.out.println("Error");
+        }
 
     }
 
