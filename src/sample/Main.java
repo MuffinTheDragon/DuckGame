@@ -1,28 +1,17 @@
 package sample;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.geometry.Pos;
 import javafx.scene.Group;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.util.Duration;
-
-import javax.print.attribute.standard.MediaPrintableArea;
-import java.io.File;
-import java.io.FileInputStream;
 
 
 /*
@@ -37,8 +26,7 @@ setCoordinates method: Position every object exactly where you want it to be *
 public class Main extends Application { //get functionality for a JavaFX program
     //to hand user events, implement EventHandler
     Stage window;
-    Button buttonStart;
-    Button buttonHelp;
+    Button button;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -59,10 +47,13 @@ public class Main extends Application { //get functionality for a JavaFX program
         primaryStage.setResizable(false);
 
 
-       File css = new File("C:\\Users\\dhava\\Stuff\\Duck Game\\StyleSheets\\Button.css");
-       scene1.getStylesheets().clear();
-       scene1.getStylesheets().add(String.valueOf(css));
+//       File css = new File(getClass().getResource("/StyleSheets/Button.css").toURI().toString());
+//       scene1.getStylesheets().clear();
+//        String styles = getClass().getResource("/sample/Button.css").toExternalForm();
 
+
+//        Tooltip tooltip = new Tooltip("Start Game");
+//        Tooltip.install(buttonStart, tooltip);
 
 
         // rootGroup.getChildren()
@@ -111,15 +102,25 @@ public class Main extends Application { //get functionality for a JavaFX program
         player.play();
 
 
+        button = new Button("Start");
 
-        buttonStart = new Button("Start");
-        buttonStart.setOnAction(e -> {
+
+        button.getStyleClass().clear();
+        button.getStyleClass().add("buttonStart");
+
+
+
+        button.setOnAction(e -> {
             primaryStage.setScene(Map1.loadMap1());
             Tools.stopMusic(player);
         });
 
+
+//        scene1.getStylesheets().add(this.getClass().getResource("/StyleSheets/Button.css").toExternalForm());
+
+
         //Using Lambada expressions for less code
-        Tools.setCoordinates(buttonStart, 620, 510);
+        Tools.setCoordinates(button, 620, 510);
 //        buttonHelp = new Button();
 //        buttonHelp.setText("Help");
 //        buttonHelp.setOnAction(e -> {
@@ -148,7 +149,7 @@ public class Main extends Application { //get functionality for a JavaFX program
 
 
         p.getChildren().add(background);
-        p.getChildren().add(buttonStart);
+        p.getChildren().add(button);
 
         try {
             Image img1 = new Image("/Images/Logo.png");
