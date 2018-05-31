@@ -93,8 +93,12 @@ public class Main extends Application { //get functionality for a JavaFX program
         primaryStage.setScene(scene1);
 
 
-        String uriString = new File("C:\\Users\\dhava\\Stuff\\Duck Game\\Music\\Title.mp3").toURI().toString();
-        MediaPlayer player = new MediaPlayer(new Media(uriString));
+//        String uriString = new File("C:\\Users\\dhava\\Stuff\\Duck Game\\Music\\Title.mp3").toURI().toString();
+//        String uriString = new File("file:///Music/Title.mp3").toURI().toString();
+//        MediaPlayer player = new MediaPlayer(new Media(uriString));
+
+        Media media = new Media(getClass().getResource("/Music/Title.mp3").toURI().toString());
+        MediaPlayer player = new MediaPlayer(media);
         player.setCycleCount(MediaPlayer.INDEFINITE);
         player.play();
 
@@ -130,7 +134,7 @@ public class Main extends Application { //get functionality for a JavaFX program
 
 
         ImageView background = new ImageView();
-        background.setImage(new Image("file:" + "C:\\Users\\dhava\\Stuff\\Duck Game\\Icons\\StartScreen.jpg"));
+        background.setImage(new Image("/Images/StartScreen.jpg"));
         background.setFitWidth(1310);
         background.setFitHeight(670);
 
@@ -139,7 +143,7 @@ public class Main extends Application { //get functionality for a JavaFX program
         p.getChildren().add(buttonStart);
 
         try {
-            Image img1 = new Image("file:" + "C:\\Users\\dhava\\Stuff\\Duck Game\\Icons\\Logo.png");
+            Image img1 = new Image("/Images/Logo.png");
             ImageView imgView1 = new ImageView(img1);
 //            Tools.setCoordinates(img1, 650, 150);
             Tools.setCoordinates(imgView1, 350, 150);
