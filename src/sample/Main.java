@@ -103,11 +103,9 @@ public class Main extends Application { //get functionality for a JavaFX program
 
 
         button = new Button("Start");
-
-
-//        button.getStyleClass().clear();
         button.getStyleClass().add("button");
 
+//        button.getStyleClass().clear();
 
 
         button.setOnAction(e -> {
@@ -148,19 +146,14 @@ public class Main extends Application { //get functionality for a JavaFX program
         background.setFitHeight(670);
 
 
-        p.getChildren().add(background);
-        p.getChildren().add(button);
 
-        try {
-            Image img1 = new Image("/Images/Logo.png");
-            ImageView imgView1 = new ImageView(img1);
+        Image img1 = new Image("/Images/Logo.png");
+        ImageView imgView1 = new ImageView(img1);
 //            Tools.setCoordinates(img1, 650, 150);
-            Tools.setCoordinates(imgView1, 350, 150);
-            p.getChildren().add(imgView1);
-        } catch (NullPointerException e) {
-            System.out.println("Error");
-        }
+        Tools.setCoordinates(imgView1, 350, 150);
 
+        //Add
+        p.getChildren().addAll(background, imgView1, button);
     }
 
     /*
@@ -171,6 +164,7 @@ public class Main extends Application { //get functionality for a JavaFX program
         }
     }
     */
+
     public static void main(String[] args) {
         launch(args); //method inside application class. Calls start method in Application class
     }

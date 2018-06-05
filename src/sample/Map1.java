@@ -9,7 +9,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
+import javafx.stage.Stage;
 
+import javax.xml.bind.JAXBContextFactory;
 
 
 
@@ -22,7 +24,7 @@ public class Map1 {
 
 
         Scene scene2 = new Scene(pane, 1300, 650); //replace layout with rootGroup to use
-
+        Stage window = new Stage();
 
         ImageView background = new ImageView();
         background.setImage(new Image("/Images/SkyMap.png"));
@@ -30,10 +32,12 @@ public class Map1 {
 
 
         Button buttonStart = new Button("Start");
-        buttonStart.setOnAction(e -> System.out.println("Hello"));
+        buttonStart.setOnAction(e -> AlertBox.display("Alert!", "Winner!"));
         //Using Lambada expressions for less code
         Tools.setCoordinates(buttonStart, 620, 510);
 
+
+        buttonStart.getStyleClass().add("button");
         pane.getChildren().add(background);
         pane.getChildren().add(buttonStart);
 
