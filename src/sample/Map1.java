@@ -15,22 +15,22 @@ import org.mapeditor.core.Tile;
 import org.mapeditor.core.TileLayer;
 import org.mapeditor.io.TMXMapReader;
 
-import javax.xml.bind.JAXBContextFactory;
+import javax.swing.*;
+import java.io.File;
+import java.io.InputStream;
 
+//import javax.xml.bind.JAXBContextFactory;
 
 
 public class Map1 {
-
 
 
     public static Scene loadMap1() {
 
 //        TMXMapReader mapReader = new TMXMapReader();
 //        Map map = null;
-//        TileLayer layer = null;
 
-       final Pane pane = new Pane();
-
+        final Pane pane = new Pane();
 
 
         Scene scene2 = new Scene(pane, 1300, 650); //replace layout with rootGroup to use
@@ -52,24 +52,46 @@ public class Map1 {
         pane.getChildren().add(buttonStart);
 
 
-        Map map = null;
+        final TMXMapReader reader = new TMXMapReader();
+        final InputStream stream = Map1.class.getClassLoader().getResourceAsStream("/Tiles/SkyMap/SkyMap.tmx");
+        final Map map;
+
         try {
-            new TMXMapReader().readMap("file:" + "C:\\Users\\dhava\\Desktop\\DuckGame\\src\\Tiles\\SkyMap\\SkyMap.tmx");
+            map = reader.readMap(stream);
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("Booboo");
         }
 
-        TileLayer layer = null;
-        assert false;
-        layer = (TileLayer)map.getLayer(0);
-        if (layer == null) {
-            System.out.println("can't get map layer");
-            System.exit(-1);
-        }
+        
 
 
+//
+//        final File file = new File("/Tiles/SkyMap/SkyMap.tmx");
+//
+//        final String fileName = file.getAbsolutePath();
+//
+//        try {
+//            final Map map = new TMXMapReader().readMap("file:" + "C:\\Users\\dhava\\Stuff\\Duck Game\\src\\Tiles\\SkyMap\\SkyMap.tmx");
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
 
+//
+//        Map map = new Map();
+//
+//        try {
+//            TMXMapReader mapReader = new TMXMapReader();
+//            map = mapReader.readMap("file:" + "C:\\Users\\dhava\\Stuff\\Duck Game\\src\\Tiles\\SkyMap\\SyMap.tmx");
+//        } catch (Exception e) {
+//            System.out.println("Error" + e.getMessage() + " Class: " + e.getClass().getName());
+//            e.printStackTrace();
+//        }
+//
+//        System.out.println(map.toString() + " Loaded");
+//
+//        JScrollPane scrollPane = new JScrollPane();
+//
+//        JScrollPane scrollPane = new JScrollPane(new MapView(map));
 
         return scene2;
     }

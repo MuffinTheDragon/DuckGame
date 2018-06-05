@@ -13,8 +13,11 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import org.mapeditor.core.Map;
+import org.mapeditor.core.Tile;
 import org.mapeditor.core.TileLayer;
 import org.mapeditor.io.TMXMapReader;
+
+import java.util.HashMap;
 
 
 /*
@@ -31,14 +34,20 @@ public class Main extends Application { //get functionality for a JavaFX program
     Stage window;
     Button button;
 
+
+//
+//    TMXMapReader mapReader = new TMXMapReader();
+//    Map map = null;
+//    TileLayer layer = null;
+
+
+
     @Override
     public void start(Stage primaryStage) throws Exception {
-
 
         BorderPane bp = new BorderPane();
         BorderPane bp2 = new BorderPane();
         final Pane p = new Pane();
-
 
         final Group rootGroup = new Group();
         final Group rootGroup2 = new Group();
