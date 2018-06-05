@@ -10,6 +10,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.TilePane;
 import javafx.stage.Stage;
+import org.mapeditor.core.Map;
+import org.mapeditor.core.Tile;
+import org.mapeditor.core.TileLayer;
+import org.mapeditor.io.TMXMapReader;
 
 import javax.xml.bind.JAXBContextFactory;
 
@@ -17,7 +21,13 @@ import javax.xml.bind.JAXBContextFactory;
 
 public class Map1 {
 
+
+
     public static Scene loadMap1() {
+
+//        TMXMapReader mapReader = new TMXMapReader();
+//        Map map = null;
+//        TileLayer layer = null;
 
        final Pane pane = new Pane();
 
@@ -40,6 +50,23 @@ public class Map1 {
         buttonStart.getStyleClass().add("button");
         pane.getChildren().add(background);
         pane.getChildren().add(buttonStart);
+
+
+        Map map = null;
+        try {
+            new TMXMapReader().readMap("file:" + "C:\\Users\\dhava\\Desktop\\DuckGame\\src\\Tiles\\SkyMap\\SkyMap.tmx");
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Booboo");
+        }
+
+        TileLayer layer = null;
+        assert false;
+        layer = (TileLayer)map.getLayer(0);
+        if (layer == null) {
+            System.out.println("can't get map layer");
+            System.exit(-1);
+        }
 
 
 

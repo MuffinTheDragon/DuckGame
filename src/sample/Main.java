@@ -12,6 +12,9 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
+import org.mapeditor.core.Map;
+import org.mapeditor.core.TileLayer;
+import org.mapeditor.io.TMXMapReader;
 
 
 /*
@@ -154,6 +157,8 @@ public class Main extends Application { //get functionality for a JavaFX program
 
         //Add
         p.getChildren().addAll(background, imgView1, button);
+
+
     }
 
     /*
